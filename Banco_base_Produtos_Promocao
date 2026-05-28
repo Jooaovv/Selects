@@ -1,0 +1,14 @@
+select
+    Cast(coalesce(c000025.codigo, 0) as integer) as Codigo,
+    left(coalesce(c000025.produto, ''), 60) as descricao,
+    coalesce(c000025.precovenda, '' ) as PRVENDA,
+    coalesce(c000025.preco_atacado, '') as VRPROMOCAO,
+    coalesce(c000025.codbarra, '') as CODIGO_BARRA,
+    coalesce(c000025.cst, ''),
+    coalesce(c000025.ncm, '') as CODIGONCM,
+    coalesce(c000025.csosn, '') as SITUACAO_TRIBUTARIA,
+    coalesce(c000025.cfop_saida_dentro, '') as cfopentrada,
+    coalesce(c000025.cfop_saida_fora, '') as cfopforaestado
+from c000025
+where
+    c000025.codbarra similar to '[0-9]+'
